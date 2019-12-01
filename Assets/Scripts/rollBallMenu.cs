@@ -11,14 +11,16 @@ public class rollBallMenu : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(0, 0, rollIt);
+        
+        rb.AddForce(-rollIt, 0, 0);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.name == "offGround")
         {
-            rb.transform.position = new Vector3(-22.1f, 0.8f, -2.08f);
+            rb.velocity = Vector3.zero;
+            rb.transform.position = new Vector3(2.1f, 0.8f, -22.1f);
         }
     }
 }

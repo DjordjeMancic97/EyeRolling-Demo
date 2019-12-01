@@ -8,44 +8,44 @@ public class AllMovingObjects : MonoBehaviour
     float currentX, currentY, currentZ;
 
     // Closing gate obstacle
-    public float rightGateStartingPoint = -6f;
-    public float rightGateEndingPoint = -2.8f;
-    public float leftGateStartingPoint = 6f;
-    public float leftGateEndingPoint = 2.8f;
-    public Vector3 leftGatePointA, rightGatePointA, leftGatePointB, rightGatePointB;
+    float rightGateStartingPoint = 2.4f;
+    float rightGateEndingPoint = 6f;
+    float leftGateStartingPoint = -2.4f;
+    float leftGateEndingPoint = -6f;
+    Vector3 leftGatePointA, rightGatePointA, leftGatePointB, rightGatePointB;
 
-    // ScaleZ obstacle
-    public float scaleZStartingPoint = 8f;
-    public float scaleZEndingPoint = 2f;
-    public Vector3 scaleZPointA, scaleZPointB;
+    // ScaleX obstacle
+    float scaleXStartingPoint = 8f;
+    float scaleXEndingPoint = 2f;
+    Vector3 scaleXPointA, scaleXPointB;
 
     // UpDown obstacle
-    public float upDownStartingPoint = 8f;
-    public float upDownEndingPoint = 2f;
-    public Vector3 upDownPointA, upDownPointB;
+    float upDownStartingPoint = 8f;
+    float upDownEndingPoint = 2f;
+    Vector3 upDownPointA, upDownPointB;
 
     // LeftRightBlock obstacle
-    public float leftRightBlockStartingPoint = 8f;
-    public float leftRightBlockEndingPoint = -8f;
-    public Vector3 leftRightBlockPointA, leftRightBlockPointB;
+    float leftRightBlockStartingPoint = 8f;
+    float leftRightBlockEndingPoint = -8f;
+    Vector3 leftRightBlockPointA, leftRightBlockPointB;
 
     // RiverBoat obstacle
-    public float riverBoatStartingPoint = -16.5f;
-    public float riverBoatEndingPoint = 9f;
-    public Vector3 riverBoatPointA, riverBoatPointB;
+    float riverBoatStartingPoint = -16.5f;
+    float riverBoatEndingPoint = 9f;
+    Vector3 riverBoatPointA, riverBoatPointB;
 
     // Rotating gate
     // this obstacle is only rotating around its Y
 
     // Right Smashers obstacle
-    public float rightSmasherStartingPoint = 20f;
-    public float rightSmasherEndingPoint = 94f;
-    public Vector3 rightSmasherPointA, rightSmasherPointB;
+    float rightSmasherStartingPoint = 20f;
+    float rightSmasherEndingPoint = 94f;
+    Vector3 rightSmasherPointA, rightSmasherPointB;
     
     // Left Smasher obstacle
-    public float leftSmasherStartingPoint = -20f;
-    public float leftSmasherEndingPoint = -94f;
-    public Vector3 leftSmasherPointA, leftSmasherPointB;
+    float leftSmasherStartingPoint = -20f;
+    float leftSmasherEndingPoint = -94f;
+    Vector3 leftSmasherPointA, leftSmasherPointB;
 
 
     void Start()
@@ -58,36 +58,36 @@ public class AllMovingObjects : MonoBehaviour
         switch (gameObject.name)
         {
             case "rightGate":
-                rightGatePointA = new Vector3(currentX, currentY, rightGateStartingPoint);
-                rightGatePointB = new Vector3(currentX, currentY, rightGateEndingPoint);
+                rightGatePointA = new Vector3(rightGateStartingPoint, currentY, currentZ);
+                rightGatePointB = new Vector3(rightGateEndingPoint, currentY, currentZ);
                 break;
             case "leftGate":
-                leftGatePointA = new Vector3(currentX, currentY, leftGateStartingPoint);
-                leftGatePointB = new Vector3(currentX, currentY, leftGateEndingPoint);
+                leftGatePointA = new Vector3(leftGateStartingPoint, currentY, currentZ);
+                leftGatePointB = new Vector3(leftGateEndingPoint, currentY, currentZ);
                 break;
-            case "scaleZ":
-                scaleZPointA = new Vector3(transform.localScale.x, transform.localScale.y, scaleZStartingPoint);
-                scaleZPointB = new Vector3(transform.localScale.x, transform.localScale.y, scaleZEndingPoint);
+            case "scaleX":
+                scaleXPointA = new Vector3(transform.localScale.x, transform.localScale.y, scaleXStartingPoint);
+                scaleXPointB = new Vector3(transform.localScale.x, transform.localScale.y, scaleXEndingPoint);
                 break;
             case "upDown":
                 upDownPointA = new Vector3(currentX, upDownStartingPoint, currentZ);
                 upDownPointB = new Vector3(currentX, upDownEndingPoint, currentZ);
                 break;
             case "leftRightBlock":
-                leftRightBlockPointA = new Vector3(currentX, currentY, leftRightBlockStartingPoint);
-                leftRightBlockPointB = new Vector3(currentX, currentY, leftRightBlockEndingPoint);
+                leftRightBlockPointA = new Vector3(leftRightBlockStartingPoint, currentY, currentZ);
+                leftRightBlockPointB = new Vector3(leftRightBlockEndingPoint, currentY, currentZ);
                 break;
             case "riverBoat":
-                riverBoatPointA = new Vector3(riverBoatStartingPoint, currentY, currentZ);
-                riverBoatPointB = new Vector3(riverBoatEndingPoint, currentY, currentZ);
+                riverBoatPointA = new Vector3(currentX, currentY, riverBoatStartingPoint);
+                riverBoatPointB = new Vector3(currentX, currentY, riverBoatEndingPoint);
                 break;
             case "leftSmasher":
-                leftSmasherPointA = new Vector3(leftSmasherStartingPoint, currentY, currentZ);
-                leftSmasherPointB = new Vector3(leftSmasherEndingPoint, currentX, currentZ);
+                leftSmasherPointA = new Vector3(transform.rotation.x, transform.rotation.y, leftSmasherStartingPoint);
+                leftSmasherPointB = new Vector3(transform.rotation.x, transform.rotation.y, leftSmasherEndingPoint);
                 break;
             case "rightSmasher":
-                rightSmasherPointA = new Vector3(rightSmasherStartingPoint, currentY, currentZ);
-                rightSmasherPointB = new Vector3(rightSmasherEndingPoint, currentX, currentZ);
+                rightSmasherPointA = new Vector3(currentX, currentY, rightSmasherStartingPoint);
+                rightSmasherPointB = new Vector3(currentX, currentX, rightSmasherEndingPoint);
                 break;
         }
         
@@ -108,10 +108,10 @@ public class AllMovingObjects : MonoBehaviour
                 time = Mathf.PingPong(Time.time * speed, 1);
                 transform.position = Vector3.Lerp(leftGatePointA, leftGatePointB, time);
                 break;
-            case "scaleZ":
+            case "scaleX":
                 speed = 1.5f;
                 time = Mathf.PingPong(Time.time * speed, 1);
-                transform.localScale = Vector3.Lerp(scaleZPointA, scaleZPointB, time);
+                transform.localScale = Vector3.Lerp(scaleXPointA, scaleXPointB, time);
                 break;
             case "upDown":
                 speed = 2f;

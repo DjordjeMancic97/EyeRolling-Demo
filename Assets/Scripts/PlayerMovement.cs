@@ -16,19 +16,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            rb.AddForce(speed * Time.deltaTime, 0, 0);
+            rb.AddForce(0, 0, speed * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            rb.AddForce(0, 0, sideSpeed * Time.deltaTime);
+            rb.AddForce(-sideSpeed * Time.deltaTime, 0, 0);
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            rb.AddForce(0, 0, -sideSpeed * Time.deltaTime);
+            rb.AddForce(sideSpeed * Time.deltaTime, 0, 0);
         }
         else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            rb.AddForce(-sideSpeed * Time.deltaTime, 0, 0);
+            rb.AddForce(0, 0, -sideSpeed * Time.deltaTime);
         }
     }
 
