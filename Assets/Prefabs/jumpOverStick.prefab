@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 5004911757661250833, guid: f21f8386eb0c5ff4f8ce215912d28d32,
         type: 3}
       propertyPath: m_Name
-      value: Obstacle
+      value: jumpOverStick
       objectReference: {fileID: 0}
     - target: {fileID: 5004911757661250837, guid: f21f8386eb0c5ff4f8ce215912d28d32,
         type: 3}

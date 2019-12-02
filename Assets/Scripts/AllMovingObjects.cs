@@ -82,12 +82,12 @@ public class AllMovingObjects : MonoBehaviour
                 riverBoatPointB = new Vector3(currentX, currentY, riverBoatEndingPoint);
                 break;
             case "leftSmasher":
-                leftSmasherPointA = new Vector3(transform.rotation.x, transform.rotation.y, leftSmasherStartingPoint);
-                leftSmasherPointB = new Vector3(transform.rotation.x, transform.rotation.y, leftSmasherEndingPoint);
+                leftSmasherPointA = new Vector3(currentX, currentY, leftSmasherStartingPoint);
+                leftSmasherPointB = new Vector3(currentX, currentY, leftSmasherEndingPoint);
                 break;
             case "rightSmasher":
                 rightSmasherPointA = new Vector3(currentX, currentY, rightSmasherStartingPoint);
-                rightSmasherPointB = new Vector3(currentX, currentX, rightSmasherEndingPoint);
+                rightSmasherPointB = new Vector3(currentX, currentY, rightSmasherEndingPoint);
                 break;
         }
         
